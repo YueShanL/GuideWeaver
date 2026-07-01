@@ -1,0 +1,41 @@
+{
+  "name": "guideweaver",
+  "version": "0.1.0",
+  "description": "Build and read versioned project guides from git trees, manifests, and dependency guide artifacts.",
+  "author": {
+    "name": "YueShanL",
+    "url": "https://github.com/YueShanL"
+  },
+  "homepage": "https://github.com/YueShanL/GuideWeaver",
+  "repository": "https://github.com/YueShanL/GuideWeaver",
+  "license": "MIT",
+  "keywords": [
+    "guide",
+    "repository",
+    "dependencies",
+    "mcp",
+    "codex"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "GuideWeaver",
+    "shortDescription": "Build and read versioned project guides.",
+    "longDescription": "GuideWeaver turns a repository and its dependencies into version-aligned project guides, then exposes build and start workflows as MCP tools for Codex.",
+    "developerName": "YueShanL",
+    "category": "Engineering",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/YueShanL/GuideWeaver",
+    "brandColor": "#0F766E",
+    "composerIcon": "./skills/GuideWeaver/assets/GuideWeaver-icon.png",
+    "logo": "./skills/GuideWeaver/assets/GuideWeaver-icon.png",
+    "defaultPrompt": [
+      "Build guides for this repo",
+      "Start guide-aware editing mode"
+    ],
+    "screenshots": []
+  }
+}

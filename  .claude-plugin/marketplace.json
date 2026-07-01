@@ -1,0 +1,20 @@
+{
+  "name": "guideweaver",
+  "interface": {
+    "displayName": "GuideWeaver"
+  },
+  "plugins": [
+    {
+      "name": "guideweaver",
+      "source": {
+        "source": "local",
+        "path": "./plugins/guideweaver"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Engineering"
+    }
+  ]
+}
