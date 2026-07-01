@@ -65,9 +65,27 @@ Use GuideWeaver start before editing this repo.
 
 ### Install As A Claude Plugin Marketplace
 
-Claude does not use Codex marketplace metadata directly. To use the marketplace layout with Claude, install the bundled MCP server and skill from the same repository checkout.
+Add this repository as a Claude plugin marketplace. Claude looks for this manifest:
 
-For Claude Desktop or Claude Code MCP config, add a server entry that points at the plugin MCP server:
+```text
+.claude-plugin/marketplace.json
+```
+
+Use the repository URL in Claude's plugin marketplace import flow:
+
+```text
+https://github.com/YueShanL/GuideWeaver
+```
+
+If you are installing from a local checkout, point Claude at the repository root, not at `plugins/guideweaver/`.
+
+The Claude marketplace manifest points at the same plugin body:
+
+```text
+plugins/guideweaver/
+```
+
+If Claude marketplace import is unavailable, configure the MCP server manually:
 
 ```json
 {
@@ -80,7 +98,7 @@ For Claude Desktop or Claude Code MCP config, add a server entry that points at 
 }
 ```
 
-Then install the bundled skill for Claude Code:
+Then install the bundled skill for Claude Code if your Claude setup uses local skills:
 
 ```bash
 mkdir -p ~/.claude/skills
