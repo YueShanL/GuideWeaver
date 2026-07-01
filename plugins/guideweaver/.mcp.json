@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "guideweaver": {
+      "command": "python",
+      "args": [
+        "./scripts/mcp_server.py"
+      ]
+    }
+  }
+}

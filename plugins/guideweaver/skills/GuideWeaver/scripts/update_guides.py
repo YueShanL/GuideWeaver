@@ -341,7 +341,7 @@ def render_project_guide(repo: Path, files: list[str], changed: list[str], manif
         "",
         f"Generated: {now}",
         "",
-        "<!-- project-guide-synth:start -->",
+        "<!-- guideweaver:start -->",
         "",
         "## Repo Shape",
         "",
@@ -359,7 +359,7 @@ def render_project_guide(repo: Path, files: list[str], changed: list[str], manif
     lines += [f"- `{x}`" for x in changed[:80]] or ["- none"]
     lines += ["", "## Dependency Guides", ""]
     lines += [f"- `{d['name']}`{('@' + d['version']) if d.get('version') else ''}: `{d['path']}`" for d in deps] or ["- none"]
-    lines += ["", "<!-- project-guide-synth:end -->", ""]
+    lines += ["", "<!-- guideweaver:end -->", ""]
     return "\n".join(lines)
 
 
@@ -367,7 +367,7 @@ def print_start(repo: Path, deps: list[dict]) -> None:
     guide_dir = repo / ".codex" / "project-guides"
     project_guide = guide_dir / "PROJECT_GUIDE.md"
     index = guide_dir / "index.json"
-    print("# project-guide-synth start")
+    print("# GuideWeaver start")
     print()
     if project_guide.exists():
         print(f"- Read current project guide: `{project_guide}`")
@@ -396,8 +396,6 @@ def main(argv: list[str]) -> int:
     args = ap.parse_args(argv)
 
     repo = Path(args.repo).resolve()
-    guide_dir = repo / ".codex" / "project-guides"
-    guide_dir.mkdir(parents=True, exist_ok=True)
 
     files = rel_files(repo)
     changed = changed_files(repo, args.since, files)
@@ -408,10 +406,12 @@ def main(argv: list[str]) -> int:
         print_start(repo, [inspect_dependency(repo, dep) for dep in dep_inputs])
         return 0
 
+    guide_dir = repo / ".codex" / "project-guides"
+    guide_dir.mkdir(parents=True, exist_ok=True)
     deps = [copy_or_generate_dependency(repo, dep) for dep in dep_inputs]
 
     guide_index = {
-        "schema": "project-guide-synth.v1",
+        "schema": "guideweaver.v1",
         "repository_remotes": remotes,
         "project_guide": ".codex/project-guides/PROJECT_GUIDE.md",
         "dependency_guides": [d["path"] for d in deps],

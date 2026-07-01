@@ -1,9 +1,9 @@
 ---
-name: project-guide-synth
+name: GuideWeaver
 description: Build and refresh repository project guides from git-tracked files and dependency guides. Use when Codex needs to understand a codebase, update .codex/project-guides docs, inspect changed files since a git ref, reuse dependency-provided guides, or create a local dependency guide before resorting to decompilation or trial-and-error.
 ---
 
-# Project Guide Synth
+# GuideWeaver
 
 Use this skill in two modes:
 
@@ -41,7 +41,12 @@ Before each editing turn, decide whether the target change needs project or depe
 
 ## Script
 
-Run the bundled script when a deterministic refresh is enough:
+When installed as the GuideWeaver plugin, prefer the MCP tools:
+
+- `build`: create or update guides.
+- `start`: list guides to read before editing.
+
+Run the bundled script directly only when MCP tools are unavailable:
 
 ```bash
 python scripts/update_guides.py build --repo <path>

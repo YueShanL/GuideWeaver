@@ -1,6 +1,0 @@
-interface:
-  display_name: "GuideWeaver"
-  short_description: "Build and read versioned project guides."
-  icon_small: "./assets/guideweaver-icon.png"
-  icon_large: "./assets/guideweaver-icon.png"
-  default_prompt: "Use $project-guide-synth to refresh this repository's project guide from the git tree and dependency guides."
