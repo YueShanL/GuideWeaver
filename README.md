@@ -53,7 +53,9 @@ The marketplace and plugin manifest live at:
 
 ```text
 .agents/plugins/marketplace.json
+.claude-plugin/marketplace.json
 plugins/guideweaver/.codex-plugin/plugin.json
+plugins/guideweaver/.claude-plugin/plugin.json
 ```
 
 After installing/reloading the plugin in Codex, use the MCP tools directly:
@@ -77,12 +79,26 @@ Use the repository URL in Claude's plugin marketplace import flow:
 https://github.com/YueShanL/GuideWeaver
 ```
 
+In Claude Code, the official marketplace command form is:
+
+```text
+/plugin marketplace add YueShanL/GuideWeaver
+/plugin install guideweaver@guideweaver
+```
+
 If you are installing from a local checkout, point Claude at the repository root, not at `plugins/guideweaver/`.
 
 The Claude marketplace manifest points at the same plugin body:
 
 ```text
 plugins/guideweaver/
+```
+
+The plugin body includes Claude-specific metadata and MCP config:
+
+```text
+plugins/guideweaver/.claude-plugin/plugin.json
+plugins/guideweaver/.claude-plugin/mcp.json
 ```
 
 If Claude marketplace import is unavailable, configure the MCP server manually:
@@ -305,9 +321,12 @@ When no guide is available:
 
 ```text
 .agents/plugins/marketplace.json
+.claude-plugin/marketplace.json
 README.md
 plugins/guideweaver/
   .codex-plugin/plugin.json
+  .claude-plugin/plugin.json
+  .claude-plugin/mcp.json
   .mcp.json
   scripts/mcp_server.py
   skills/GuideWeaver/

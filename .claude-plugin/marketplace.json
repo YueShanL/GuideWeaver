@@ -1,20 +1,16 @@
 {
   "name": "guideweaver",
-  "interface": {
-    "displayName": "GuideWeaver"
+  "owner": {
+    "name": "YueShanL"
   },
+  "description": "GuideWeaver plugin marketplace for Claude Code.",
   "plugins": [
     {
       "name": "guideweaver",
-      "source": {
-        "source": "local",
-        "path": "./plugins/guideweaver"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Engineering"
+      "displayName": "GuideWeaver",
+      "source": "./plugins/guideweaver",
+      "description": "Build and read versioned project guides from git trees, manifests, and dependency guide artifacts.",
+      "category": "engineering"
     }
   ]
 }

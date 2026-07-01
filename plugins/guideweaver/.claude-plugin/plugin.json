@@ -1,0 +1,22 @@
+{
+  "name": "guideweaver",
+  "displayName": "GuideWeaver",
+  "version": "0.1.0",
+  "description": "Build and read versioned project guides from git trees, manifests, and dependency guide artifacts.",
+  "author": {
+    "name": "YueShanL",
+    "url": "https://github.com/YueShanL"
+  },
+  "homepage": "https://github.com/YueShanL/GuideWeaver",
+  "repository": "https://github.com/YueShanL/GuideWeaver",
+  "license": "MIT",
+  "keywords": [
+    "guide",
+    "repository",
+    "dependencies",
+    "mcp",
+    "claude-code"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.claude-plugin/mcp.json"
+}
