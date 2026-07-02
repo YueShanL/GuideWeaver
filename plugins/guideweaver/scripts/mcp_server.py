@@ -104,7 +104,7 @@ def handle(message: dict) -> dict | None:
             "result": {
                 "protocolVersion": "2024-11-05",
                 "capabilities": {"tools": {}},
-                "serverInfo": {"name": "guideweaver", "version": "0.1.0"},
+                "serverInfo": {"name": "guideweaver", "version": "0.1.1"},
             },
         }
     if method == "tools/list":
