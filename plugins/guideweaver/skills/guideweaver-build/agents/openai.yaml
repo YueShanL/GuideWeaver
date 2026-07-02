@@ -1,0 +1,6 @@
+interface:
+  display_name: "GuideWeaver Build"
+  short_description: "Build versioned project guides."
+  icon_small: "./assets/GuideWeaver-icon.png"
+  icon_large: "./assets/GuideWeaver-icon.png"
+  default_prompt: "Use $guideweaver-build to build or refresh this repository's GuideWeaver guides."

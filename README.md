@@ -1,6 +1,6 @@
 # GuideWeaver
 
-![GuideWeaver icon](plugins/guideweaver/skills/GuideWeaver/assets/GuideWeaver-icon.png)
+![GuideWeaver icon](plugins/guideweaver/skills/guideweaver-build/assets/GuideWeaver-icon.png)
 
 GuideWeaver is a Codex plugin and bundled skill for turning a project and its dependencies into compact, version-aligned guides. It has two modes:
 
@@ -45,7 +45,7 @@ codex plugin add guideweaver@guideweaver
 
 The plugin includes:
 
-- bundled skill: `plugins/guideweaver/skills/GuideWeaver/SKILL.md`;
+- bundled skills: `guideweaver-build` and `guideweaver-start`;
 - MCP server: `plugins/guideweaver/scripts/mcp_server.py`;
 - MCP tools: `build` and `start`.
 
@@ -114,18 +114,20 @@ If Claude marketplace import is unavailable, configure the MCP server manually:
 }
 ```
 
-Then install the bundled skill for Claude Code if your Claude setup uses local skills:
+Then install the bundled skills for Claude Code if your Claude setup uses local skills:
 
 ```bash
 mkdir -p ~/.claude/skills
-cp -R /path/to/GuideWeaver/plugins/guideweaver/skills/GuideWeaver ~/.claude/skills/GuideWeaver
+cp -R /path/to/GuideWeaver/plugins/guideweaver/skills/guideweaver-build ~/.claude/skills/guideweaver-build
+cp -R /path/to/GuideWeaver/plugins/guideweaver/skills/guideweaver-start ~/.claude/skills/guideweaver-start
 ```
 
 On Windows PowerShell:
 
 ```powershell
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills"
-Copy-Item -Recurse -Force C:\path\to\GuideWeaver\plugins\guideweaver\skills\GuideWeaver "$env:USERPROFILE\.claude\skills\GuideWeaver"
+Copy-Item -Recurse -Force C:\path\to\GuideWeaver\plugins\guideweaver\skills\guideweaver-build "$env:USERPROFILE\.claude\skills\guideweaver-build"
+Copy-Item -Recurse -Force C:\path\to\GuideWeaver\plugins\guideweaver\skills\guideweaver-start "$env:USERPROFILE\.claude\skills\guideweaver-start"
 ```
 
 Restart Claude, then ask:
@@ -140,7 +142,7 @@ Use GuideWeaver start before editing this repo.
 Run the script directly:
 
 ```bash
-python plugins/guideweaver/skills/GuideWeaver/scripts/update_guides.py build --repo /path/to/repo
+python plugins/guideweaver/skills/guideweaver-build/scripts/update_guides.py build --repo /path/to/repo
 ```
 
 Any Python 3.10+ should work; the script uses only the Python standard library plus existing local tools such as `git`, `jar`, and `javap` when available.
@@ -150,71 +152,77 @@ Any Python 3.10+ should work; the script uses only the Python standard library p
 Copy the folder to your Codex skills directory:
 
 ```text
-plugins/guideweaver/skills/GuideWeaver/
+plugins/guideweaver/skills/guideweaver-build/
+plugins/guideweaver/skills/guideweaver-start/
 ```
 
 Typical destination:
 
 ```text
-%CODEX_HOME%\skills\GuideWeaver
+%CODEX_HOME%\skills\guideweaver-build
+%CODEX_HOME%\skills\guideweaver-start
 ```
 
 Then invoke it in Codex:
 
 ```text
-Use GuideWeaver to refresh this repository's project guide from the git tree and dependency guides.
+Use $guideweaver-build to refresh this repository's guides.
+Use $guideweaver-start before editing this repository.
 ```
 
 ### Install For Claude
 
-GuideWeaver is also usable as a Claude skill because the skill folder contains a standard `SKILL.md`.
+GuideWeaver is also usable as Claude skills because each skill folder contains a standard `SKILL.md`.
 
 For Claude Code, copy the skill folder into Claude's user skills directory:
 
 ```bash
 mkdir -p ~/.claude/skills
-cp -R plugins/guideweaver/skills/GuideWeaver ~/.claude/skills/GuideWeaver
+cp -R plugins/guideweaver/skills/guideweaver-build ~/.claude/skills/guideweaver-build
+cp -R plugins/guideweaver/skills/guideweaver-start ~/.claude/skills/guideweaver-start
 ```
 
 On Windows PowerShell:
 
 ```powershell
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills"
-Copy-Item -Recurse -Force plugins\guideweaver\skills\GuideWeaver "$env:USERPROFILE\.claude\skills\GuideWeaver"
+Copy-Item -Recurse -Force plugins\guideweaver\skills\guideweaver-build "$env:USERPROFILE\.claude\skills\guideweaver-build"
+Copy-Item -Recurse -Force plugins\guideweaver\skills\guideweaver-start "$env:USERPROFILE\.claude\skills\guideweaver-start"
 ```
 
 Restart or reload Claude Code, then ask:
 
 ```text
-Use GuideWeaver to build this repository's guide.
+Use $guideweaver-build to build this repository's guide.
+Use $guideweaver-start before editing this repository.
 ```
 
-For Claude web or team workspaces that support uploaded skills, zip the contents of `plugins/guideweaver/skills/GuideWeaver/` so `SKILL.md` is at the archive root, then upload the zip in the Skills settings.
+For Claude web or team workspaces that support uploaded skills, upload separate zips for `plugins/guideweaver/skills/guideweaver-build/` and `plugins/guideweaver/skills/guideweaver-start/`, each with `SKILL.md` at the archive root.
 
 ## Build Mode
 
 Build or update guides:
 
 ```bash
-python plugins/guideweaver/skills/GuideWeaver/scripts/update_guides.py build --repo /path/to/repo
+python plugins/guideweaver/skills/guideweaver-build/scripts/update_guides.py build --repo /path/to/repo
 ```
 
 Focus on changes since a git ref:
 
 ```bash
-python plugins/guideweaver/skills/GuideWeaver/scripts/update_guides.py build --repo /path/to/repo --since HEAD~1
+python plugins/guideweaver/skills/guideweaver-build/scripts/update_guides.py build --repo /path/to/repo --since HEAD~1
 ```
 
 Add an explicit dependency path or artifact:
 
 ```bash
-python plugins/guideweaver/skills/GuideWeaver/scripts/update_guides.py build --repo /path/to/repo --dependency /path/to/dependency.jar
+python plugins/guideweaver/skills/guideweaver-build/scripts/update_guides.py build --repo /path/to/repo --dependency /path/to/dependency.jar
 ```
 
 Compatibility shortcut:
 
 ```bash
-python plugins/guideweaver/skills/GuideWeaver/scripts/update_guides.py --repo /path/to/repo
+python plugins/guideweaver/skills/guideweaver-build/scripts/update_guides.py --repo /path/to/repo
 ```
 
 This behaves like `build`.
@@ -224,7 +232,7 @@ This behaves like `build`.
 Before editing a project, run:
 
 ```bash
-python plugins/guideweaver/skills/GuideWeaver/scripts/update_guides.py start --repo /path/to/repo
+python plugins/guideweaver/skills/guideweaver-build/scripts/update_guides.py start --repo /path/to/repo
 ```
 
 `start` does not write files. It prints:
@@ -286,7 +294,7 @@ It also checks common local package locations:
 If a dependency uses a custom layout, pass it explicitly:
 
 ```bash
-python plugins/guideweaver/skills/GuideWeaver/scripts/update_guides.py build --repo /path/to/repo --dependency /path/to/dependency
+python plugins/guideweaver/skills/guideweaver-build/scripts/update_guides.py build --repo /path/to/repo --dependency /path/to/dependency
 ```
 
 ## Packaging Guides With Libraries
@@ -329,10 +337,14 @@ plugins/guideweaver/
   .claude-plugin/mcp.json
   .mcp.json
   scripts/mcp_server.py
-  skills/GuideWeaver/
+  skills/guideweaver-build/
     SKILL.md
     agents/openai.yaml
     assets/GuideWeaver-icon.png
     references/guide-conventions.md
     scripts/update_guides.py
+  skills/guideweaver-start/
+    SKILL.md
+    agents/openai.yaml
+    assets/GuideWeaver-icon.png
 ```

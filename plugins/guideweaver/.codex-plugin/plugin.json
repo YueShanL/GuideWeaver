@@ -1,6 +1,6 @@
 {
   "name": "guideweaver",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build and read versioned project guides from git trees, manifests, and dependency guide artifacts.",
   "author": {
     "name": "YueShanL",
@@ -30,11 +30,11 @@
     ],
     "websiteURL": "https://github.com/YueShanL/GuideWeaver",
     "brandColor": "#0F766E",
-    "composerIcon": "./skills/GuideWeaver/assets/GuideWeaver-icon.png",
-    "logo": "./skills/GuideWeaver/assets/GuideWeaver-icon.png",
+    "composerIcon": "./skills/guideweaver-build/assets/GuideWeaver-icon.png",
+    "logo": "./skills/guideweaver-build/assets/GuideWeaver-icon.png",
     "defaultPrompt": [
-      "Build guides for this repo",
-      "Start guide-aware editing mode"
+      "Use GuideWeaver Build for this repo",
+      "Use GuideWeaver Start before editing"
     ],
     "screenshots": []
   }

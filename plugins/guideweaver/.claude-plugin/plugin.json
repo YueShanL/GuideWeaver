@@ -1,8 +1,8 @@
 {
   "name": "guideweaver",
   "displayName": "GuideWeaver",
-  "version": "0.1.0",
-  "description": "Build and read versioned project guides from git trees, manifests, and dependency guide artifacts.",
+  "version": "0.1.1",
+  "description": "Build versioned project guides and start guide-aware editing through separate GuideWeaver entries.",
   "author": {
     "name": "YueShanL",
     "url": "https://github.com/YueShanL"

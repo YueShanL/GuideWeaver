@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-GUIDE_SCRIPT = ROOT / "skills" / "GuideWeaver" / "scripts" / "update_guides.py"
+GUIDE_SCRIPT = ROOT / "skills" / "guideweaver-build" / "scripts" / "update_guides.py"
 
 
 TOOLS = [
